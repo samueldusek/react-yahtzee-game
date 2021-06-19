@@ -23,7 +23,6 @@ class Rule {
     // frequencies of dice values
     const freqs = new Map();
     for (let d of dice) freqs.set(d, (freqs.get(d) || 0) + 1);
-    console.log(Array.from(freqs.values()));
     return Array.from(freqs.values());
   }
 
@@ -61,7 +60,6 @@ class SumDistro extends Rule {
 class FullHouse extends Rule {
   evalRoll = (dice) => {
     const d = new Set(this.freq(dice));
-    console.log(d);
     return d.has(2) && d.has(3) ? this.score : 0;
   };
 }

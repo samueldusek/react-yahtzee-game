@@ -20,6 +20,15 @@ import {
 class ScoreTable extends Component {
   render() {
     const { scores, doScore } = this.props;
+    let totalScore = 0;
+    let scoredArray = Object.entries(scores).filter((score) =>
+      Number.isInteger(score[1])
+    );
+    if (scoredArray.length) {
+      scoredArray.forEach((score) => {
+        totalScore += score[1];
+      });
+    }
 
     return (
       <div className="ScoreTable">
@@ -118,6 +127,9 @@ class ScoreTable extends Component {
               />
             </tbody>
           </table>
+          <div>
+            <h2>Total Score: {totalScore}</h2>
+          </div>
         </section>
       </div>
     );
